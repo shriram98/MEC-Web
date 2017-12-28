@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title> Application </title>
+</head>
+<body>
+  <style type="text/css">
+@media only screen and (max-width: 935px){
+/* for mobile devices */
+  body{
+    background:#93a2f0;
+  }
+
+
+  #title{
+    font-size: 300%;
+    font-weight: 700;
+    font-style: oblique;
+    font-kerning: auto;
+    font-family:serif;
+  }
+
+  #right{
+    display: none;
+  }
+  #right2{
+    display: block;
+  }
+  #out{
+    background-color:lightgrey ;
+    font-size :50%;
+    height: 500px;
+    width: 100%;
+  }
+
+  .control-element{
+    font-size: 200%;
+    font-family: fantasy;
+  }
+
+  #content{
+    padding-left: 7%;
+  }
+
+  #sub {
+    border-radius: 5%;
+    background-color: #ee7035;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 200%;
+    padding: 3%;
+    width: 40%;
+  }
+
+  #fname,#lname,#date,#em,#ph,#preoc
+  {
+    height:80px;
+    width:80%;
+    font-size: 200%;
+    border-radius: 5px;
+  }
+  #gen1,#gen2,#gen3{
+    height:40px;
+    width:10%;
+    padding: 5%;
+  }
+  #radio{
+    font-size: 200%;
+    vertical-align: middle;
+  }
+}
+
+@media only screen and (min-width: 769px){
+/* for regular devices*/
+body{
+  background:#93a2f0;
+}
+
+#title{
+  font-size: 30px;
+  font-weight: 700;
+  font-style: oblique;
+  font-kerning: auto;
+  font-family:serif;
+}
+
+#right{
+  display: block;
+  float: right;
+}
+#right2{
+  display: none;
+}
+#out{
+  float:right ;
+}
+
+#out{
+  background-color:#8183e7 ;
+  color: white;
+  font-size :17px;
+  overflow-x: auto;
+  height: 400px;
+  width: 700px;
+  overflow-x: auto;
+}
+
+.control-element{
+  font-size: 20px;
+  font-family: fantasy;
+}
+
+#content{
+  padding-left: 15px;
+}
+
+#sub {
+  border-radius: 5px;
+  background-color: #ee7035;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  width: 150px;
+  cursor: pointer;
+}
+
+#fname,#lname,#date,#em,#ph,#preoc
+  {
+    height:30px;
+    width:30%;
+    font-size: 100%;
+    border-radius: 5px;
+  }
+  #gen1,#gen2,#gen3{
+    height:20px;
+    width:5%;
+  }
+  #radio{
+    font-size: 100%;
+    vertical-align: middle;
+  }
+
+}
+  </style>
+  <div id="title"><center> APPLICATION FORM </center></div>
+  <br><br>
+  <div id="right">
+    <textarea id="out" name="Output">The Data Sent To the server will be displayed here on clicking the Submit button
+    </textarea>
+    <br><br>
+    </div>
+  <div id="content">
+    <form name="jobapp" action="https://httpbin.org/pos" id="form1" method="post" >
+        <label class="control-element"> Name </label><br>
+        <input name="firstName" id="fname" type="text" placeholder="First Name" required>
+        <br><br>
+        <input name="lastName" id="lname" type="text" placeholder="Last Name" required>
+        <br><br>
+        <label class="control-element"> Gender </label><br>
+        <div id="radio">
+        <input name="gender" id="gen1" type="radio" value="male"> Male
+        <input name="gender" id="gen2" type="radio" value="female"> Female
+        <input name="gender" id="gen3" type="radio" value="other"> Other
+      </div>
+        <br>
+        <label class="control-element"> Date Of Birth </label><br>
+        <input name="dob" id="date" type="text" placeholder="DD/MM/YY" required>
+        <br><br>
+        <label class="control-element"> Email </label><br>
+        <input name="email" id="em" type="email" placeholder="example@mail.com" required>
+        <br><br>
+        <label class="control-element"> Phone </label><br>
+        <input name="phone" id="ph" type="text" required>
+        <br><br>
+        <label class="control-element"> Previous Occupation (if any) </label><br>
+        <input name="prevoc" id="preoc" type="text">
+        <br><br><br>
+        <input id="sub" type="submit" value="Submit">
+      </form>
+    </div>
+    <div id="right2">
+      <br><br><br>
+      <textarea id="out" name="Output">The Data Sent To the server will be displayed here on clicking the Submit button
+      </textarea>
+      <br><br>
+      <!--<button type="button" id="genbutton" onclick="convertJSON()"><span>Generate JSON Object</span></button>-->
+    </div>
+    <script>
+    function convertJSON(){
+      document.getElementById("out").innerHTML ="Please Wait Your request is being processed....";
+      var obj = '{\n';
+      var i;
+      for(i=0;i<9;i++)
+      {
+        var nm = document.forms["jobapp"][i].name;
+        var vl = document.forms["jobapp"][i].value;
+        if(i<2 || i>4)
+        {
+          if(document.forms["jobapp"][i].type == "number")
+          {
+            obj+='"' + nm + '"' + ':' + vl + ',' + '\n';
+          }
+          else{
+            obj+='"' + nm + '"' + ':' + '"' + vl + '"' + ',' + '\n';
+          }
+        }
+        else {
+          {
+            if(document.forms["jobapp"][i].checked)
+            {
+              obj+='"' + nm + '"' + ':' + '"' + vl + '"' + ',' + '\n';
+            }
+          }
+        }
+      }
+      obj+='};'
+
+      var JSONobj = JSON.stringify(obj);
+      //document.getElementById("out").innerHTML = obj + '\n\n' + JSONobj;
+      var myrequest = new XMLHttpRequest();
+      myrequest.onreadystatechange = function(){
+        if(myrequest.readyState==4){
+          if(myrequest.status==200 || window.location.href.indexOf("http")==-1){
+            document.getElementById("out").innerHTML = obj + '\n\n' + JSONobj;
+            var d1 = document.getElementById('out');
+            d1.insertAdjacentHTML('beforeend', '\n\n' + myrequest.responseText);
+          }
+          else{
+            window.alert("An error has occured while processing your request")
+          }
+        }
+      }
+      myrequest.open('POST', "https://httpbin.org/post", true);
+      myrequest.setRequestHeader('Content-Type', 'application/json; charset = UTF-8' );
+      myrequest.send(JSONobj);
+
+    }
+    document.forms["jobapp"].onsubmit = function(e){
+      convertJSON();
+      e.preventDefault();
+    }
+
+    </script>
+  </body>
+</html>
