@@ -1,0 +1,66 @@
+
+body{
+  background:#93a2f0;
+}
+
+#title{
+  font-size: 30px;
+  font-weight: 700;
+  font-style: oblique;
+  font-kerning: auto;
+  font-family:serif;
+}
+
+#right{
+  float: right;
+}
+#out{
+  float:right ;
+}
+
+#out{
+  background-color:#8183e7 ;
+  color: white;
+  font-size :17px;
+  overflow-x: auto;
+  height: 400px;
+  width: 700px;
+  overflow-x: auto;
+}
+
+.control-element{
+  font-size: 20px;
+  font-family: fantasy;
+}
+
+#content{
+  padding-left: 15px;
+}
+
+#sub {
+  border-radius: 5px;
+  background-color: #ee7035;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  width: 150px;
+  cursor: pointer;
+}
+
+#fname,#lname,#date,#em,#ph,#preoc
+  {
+    height:30px;
+    width:30%;
+    font-size: 100%;
+    border-radius: 5px;
+  }
+  #gen1,#gen2,#gen3{
+    height:20px;
+    width:5%;
+  }
+  #radio{
+    font-size: 100%;
+    vertical-align: middle;
+  }
