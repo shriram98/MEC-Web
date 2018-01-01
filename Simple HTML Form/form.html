@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title> Application Form </title>
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <link href="Style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Varela+Round|Lobster+Two|Quattrocento+Sans|Crimson+Text"
+  rel="stylesheet" type="text/css">
+  <!--<link href=" style_mobile.css" rel="stylesheet" media="screen and (max-width: 936px)"/>-->
+</head>
+<body>
+  <div id="title">
+    <img src="res/logo.jpg" id="logo">
+    Application Form
+  </div>
+  <br><br>
+  <div id="content">
+    <form name="jobapp" action="https://httpbin.org/post" id="form1" method="post" >
+        <label class="control-element"> Name </label><br>
+        <input class="inp" name="firstName" id="fname" type="text" placeholder="First Name" >
+	      <br><br>
+        <input class="inp" name="lastName" id="lname" type="text" placeholder="Last Name" >
+        <br><br>
+        <label class="control-element"> Gender </label><br>
+        <div id="radio">
+        <input class="inp2" name="gender" id="gen1" type="radio" value="male"> Male
+        <input class="inp2" name="gender" id="gen2" type="radio" value="female"> Female
+        <input class="inp2" name="gender" id="gen3" type="radio" value="other"> Other
+        <br><br>
+        </div>
+        <label class="control-element"> Date Of Birth </label><br>
+        <input class="inp" name="dob" id="date" type="date" placeholder="DD/MM/YY" >
+        <br><br>
+        <label class="control-element"> Email </label><br>
+        <input class="inp" name="email" id="em" type="email" placeholder="you@example.com" >
+        <br><br>
+        <label class="control-element"> Phone </label><br>
+        <input class="inp" name="phone" id="ph" type="tel" minlength="10" maxlength="10" placeholder="+91">
+        <br><br>
+        <label class="control-element"> Present Address </label><br>
+        <input class="inp" name="prevoc" id="preoc" type="text">
+        <br><br>
+        <input id="sub" type="submit" value="Submit">
+      </form>
+    </div>
+      <textarea class="out" id="right" readonly>Your output will be displayed here</textarea>
+    <script src="formScript.js"></script>
+  </body>
+</html>
